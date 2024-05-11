@@ -21,6 +21,7 @@ pipeline {
                 sh 'docker push kbindesh/flaskapp:$BUILD_NUMBER'
             }
         }
+        
 }
 post {
         always {
