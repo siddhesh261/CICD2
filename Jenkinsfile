@@ -3,6 +3,7 @@ pipeline {
     environment {
     DOCKERHUB_CREDENTIALS = credentials('siddhesh261-dockerhub')
     }
+    
     stages { 
 
         stage('Build docker image') {
