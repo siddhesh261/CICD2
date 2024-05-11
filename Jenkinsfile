@@ -3,12 +3,12 @@ pipeline {
     environment {
     DOCKERHUB_CREDENTIALS = credentials('siddhesh261-dockerhub')
     }
-    
+
     stages { 
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t kbindesh/flaskapp:$BUILD_NUMBER .'
+                sh 'sudo docker build -t kbindesh/flaskapp:$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
