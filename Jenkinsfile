@@ -5,17 +5,22 @@ pipeline {
     }
     stages { 
 
-        stage('Build docker image') {
+        stage('Build image') {
             steps {  
                 sh 'docker build -t kbindesh/flaskapp:$BUILD_NUMBER .'
             }
         }
-        stage('login to dockerhub') {
+        stage('Test image'){
+            steps {
+                 echo 'Empty'
+            }
+        }
+        stage('Connecting to DockerHub') {
             steps{
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
-        stage('push image') {
+        stage('Push image') {
             steps{
                 sh 'docker push kbindesh/flaskapp:$BUILD_NUMBER'
             }
