@@ -1,5 +1,5 @@
 pipeline {
-    agent any 
+    agent any
     environment {
     DOCKERHUB_CREDENTIALS = credentials('siddhesh261-Dockerhub')
     }
@@ -25,10 +25,12 @@ pipeline {
                 sh 'docker push siddhesh261/flaskapp:$BUILD_NUMBER'
             }
         }
-}
-post {
+    }
+    post {
         always {
-            sh 'docker logout'
+            script {
+                sh 'docker logout'
+            }
         }
     }
 }
