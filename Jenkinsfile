@@ -1,31 +1,36 @@
 pipeline {
-    agent any 
+    agent any
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('siddhesh261-dockerhub')
+    DOCKERHUB_CREDENTIALS = credentials('siddhesh261-Dockerhub')
     }
-
     stages { 
 
-        stage('Build docker image') {
+        stage('Build image') {
             steps {  
-                sh 'sudo docker build -t kbindesh/flaskapp:$BUILD_NUMBER .'
+                sh 'docker build -t siddhesh261/flaskapp:$BUILD_NUMBER .'
             }
         }
-        stage('login to dockerhub') {
+        stage('Test image'){
+            steps {
+                 echo 'Empty'
+            }
+        }
+        stage('Connecting to DockerHub') {
             steps{
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
-        stage('push image') {
+        stage('Push image') {
             steps{
-                sh 'docker push kbindesh/flaskapp:$BUILD_NUMBER'
+                sh 'docker push siddhesh261/flaskapp:$BUILD_NUMBER'
             }
         }
-        
-}
-post {
+    }
+    post {
         always {
-            sh 'docker logout'
+            script {
+                sh 'docker logout'
+            }
         }
     }
 }
