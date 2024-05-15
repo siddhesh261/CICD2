@@ -6,6 +6,7 @@
 
 - [AWS Account](https://aws.amazon.com/free/)
 - IDE
+
   - [Visual Studio Code](https://code.visualstudio.com/download)
 - Install VS Code Extensions (Terraform, terraform-lint)
 - [Git](https://git-scm.com/downloads)
