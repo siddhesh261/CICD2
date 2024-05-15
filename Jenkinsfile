@@ -1,13 +1,13 @@
 pipeline {
     agent any 
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('docker_creds')
+    DOCKERHUB_CREDENTIALS = credentials('siddhesh261-Dockerhub')
     }
     stages { 
 
         stage('Build image') {
             steps {  
-                sh 'docker build -t kbindesh/flaskapp:$BUILD_NUMBER .'
+                sh 'docker build -t siddhesh261/flaskapp:$BUILD_NUMBER .'
             }
         }
         stage('Test image'){
@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Push image') {
             steps{
-                sh 'docker push kbindesh/flaskapp:$BUILD_NUMBER'
+                sh 'docker push siddhesh261/flaskapp:$BUILD_NUMBER'
             }
         }
 }
